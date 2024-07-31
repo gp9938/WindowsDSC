@@ -14,9 +14,10 @@ properties:
         allowPrerelease: true
       settings:
         Ensure: Present
-   # - resource: Microsoft.Windows.Developer/ShowTaskViewButton
-   #   directives:
-   #     description: Show task view button
-   #     allowPrerelease: true
-   #   settings:
-  configurationVersion: 0.1.0
+    - resource: Microsoft.Windows.Developer/EnableDarkMode
+      directives:
+        description: Enable dark mode
+        allowPrerelease: true
+      settings:
+        Ensure: Present
+  configurationVersion: 0.2.0
