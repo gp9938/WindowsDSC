@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+properties:
+  resources:
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Google.Chrome
+      directives:
+        description: Install Chrome
+        allowPrerelease: false
+      settings:
+        id: Google.Chrome
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Mozilla.Firefox
+      directives:
+        description: Install Firefox
+        allowPrerelease: false
+      settings:
+        id: Mozilla.Firefox
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: WinMerge
+      directives:
+        description: Install WinMerge
+        allowPrerelease: true
+      settings:
+        id: WinMerge.WinMerge
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Cygwin.Cygwin
+      directives:
+        description: Install cygwin
+        allowPrerelease: true
+      settings:
+        id: Cygwin.Cygwin
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Gnu.Emacs
+      directives:
+        description: Install emacs
+        allowPrerelease: true
+      settings:
+        id: Gnu.Emacs
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: PowerToys
+      directives:
+        description: Install PowerToys
+        allowPrerelease: true
+      settings:
+        id: Microsoft.PowerToys
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Mozilla.Thunderbird
+      directives:
+        description: Install Thunderbird
+        allowPrerelease: false
+      settings:
+        id: Mozilla.Thunderbird
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Rem0o.FanControl
+      directives:
+        description: Install Fan Control
+        allowPrerelease: true
+      settings:
+        id: Rem0o.FanControl
+        source: winget
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: XPDP273C0XHQH2
+      directives:
+        description: Install Adobe Acrobat
+        allowPrerelease: true
+      settings:
+        id: XPDP273C0XHQH2
+        source: msstore
+  configurationVersion: 0.1.0
