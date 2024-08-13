@@ -190,7 +190,7 @@ log('Received args:', args )
 # extract command line args
 #
 intermediate_file_dir=getattr(args, 'intermediate_file_dir')
-output_file=getattr(args, 'output_file' )
+output_file=os.path.realpath(getattr(args, 'output_file' ))
 overwrite=getattr(args, 'overwrite')
 basename=getattr(args, 'basename')
 use_winget_list_file=getattr(args, 'use_winget_list_file')
@@ -215,8 +215,6 @@ log( 'Extracted startup argument, winget_list_powershell_script_path:', winget_l
 log( 'Extracted startup argument, exclude_apps_cfg_path:',  exclude_apps_cfg_path )
 
 
-    
-    
 if (overwrite==False and os.path.exists(output_file)):
     log("Flag overwrite is false and output_file,",
         output_file,"exists.  Exiting...", to_stderr=True)
