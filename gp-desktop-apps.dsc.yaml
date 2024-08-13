@@ -2,610 +2,610 @@
 properties:
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: AgileBits.1Password
-        directives:
-          description: Install 1Password
-          allowPrerelease: true
+      directives:
+        description: Install 1Password
+        allowPrerelease: true
       settings:
         id: AgileBits.1Password
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Amazon.SendToKindle
-        directives:
-          description: Install Amazon Send to Kindle
-          allowPrerelease: true
+      directives:
+        description: Install Amazon Send to Kindle
+        allowPrerelease: true
       settings:
         id: Amazon.SendToKindle
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Apple.AppleApplicationSupport.x64
-        directives:
-          description: Install Apple Application Support (64-bit)
-          allowPrerelease: true
+      directives:
+        description: Install Apple Application Support (64-bit)
+        allowPrerelease: true
       settings:
         id: Apple.AppleApplicationSupport.x64
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Apple.AppleApplicationSupport.x86
-        directives:
-          description: Install Apple Application Support (32-bit)
-          allowPrerelease: true
+      directives:
+        description: Install Apple Application Support (32-bit)
+        allowPrerelease: true
       settings:
         id: Apple.AppleApplicationSupport.x86
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Apple.Bonjour
-        directives:
-          description: Install Bonjour
-          allowPrerelease: true
+      directives:
+        description: Install Bonjour
+        allowPrerelease: true
       settings:
         id: Apple.Bonjour
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Bitdefender.Bitdefender
-        directives:
-          description: Install Bitdefender Agent
-          allowPrerelease: true
+      directives:
+        description: Install Bitdefender Agent
+        allowPrerelease: true
       settings:
         id: Bitdefender.Bitdefender
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: BlenderFoundation.Blender
-        directives:
-          description: Install blender
-          allowPrerelease: true
+      directives:
+        description: Install blender
+        allowPrerelease: true
       settings:
         id: BlenderFoundation.Blender
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Canonical.Ubuntu.2204
-        directives:
-          description: Install Ubuntu
-          allowPrerelease: true
+      directives:
+        description: Install Ubuntu
+        allowPrerelease: true
       settings:
         id: Canonical.Ubuntu.2204
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Cloudflare.cloudflared
-        directives:
-          description: Install cloudflared
-          allowPrerelease: true
+      directives:
+        description: Install cloudflared
+        allowPrerelease: true
       settings:
         id: Cloudflare.cloudflared
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Crucial.StorageExecutive
-        directives:
-          description: Install Crucial Storage Executive
-          allowPrerelease: true
+      directives:
+        description: Install Crucial Storage Executive
+        allowPrerelease: true
       settings:
         id: Crucial.StorageExecutive
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Elgato.StreamDeck
-        directives:
-          description: Install Elgato Stream Deck
-          allowPrerelease: true
+      directives:
+        description: Install Elgato Stream Deck
+        allowPrerelease: true
       settings:
         id: Elgato.StreamDeck
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: EpicGames.EpicGamesLauncher
-        directives:
-          description: Install Epic Games Launcher
-          allowPrerelease: true
+      directives:
+        description: Install Epic Games Launcher
+        allowPrerelease: true
       settings:
         id: EpicGames.EpicGamesLauncher
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: FinalWire.AIDA64.Extreme
-        directives:
-          description: Install AIDA64 Extreme v7.35
-          allowPrerelease: true
+      directives:
+        description: Install AIDA64 Extreme v7.35
+        allowPrerelease: true
       settings:
         id: FinalWire.AIDA64.Extreme
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: GNU.Wget2
-        directives:
-          description: Install Wget2
-          allowPrerelease: true
+      directives:
+        description: Install Wget2
+        allowPrerelease: true
       settings:
         id: GNU.Wget2
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: GoTo.GoTo
-        directives:
-          description: Install GoTo 4.8.0
-          allowPrerelease: true
+      directives:
+      description: Install GoTo 4.8.0
+      allowPrerelease: true
       settings:
         id: GoTo.GoTo
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Google.Chrome.EXE
-        directives:
-          description: Install Google Chrome
-          allowPrerelease: true
+      directives:
+      description: Install Google Chrome
+      allowPrerelease: true
       settings:
         id: Google.Chrome.EXE
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Google.EarthPro
-        directives:
-          description: Install Google Earth Pro
-          allowPrerelease: true
+      directives:
+      description: Install Google Earth Pro
+      allowPrerelease: true
       settings:
         id: Google.EarthPro
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: GuinpinSoft.MakeMKV
-        directives:
-          description: Install MakeMKV v1.17.7
-          allowPrerelease: true
+      directives:
+        description: Install MakeMKV v1.17.7
+        allowPrerelease: true
       settings:
         id: GuinpinSoft.MakeMKV
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Guru3D.Afterburner
-        directives:
-          description: Install MSI Afterburner 4.6.5
-          allowPrerelease: true
+      directives:
+        description: Install MSI Afterburner 4.6.5
+        allowPrerelease: true
       settings:
         id: Guru3D.Afterburner
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Guru3D.RTSS
-        directives:
-          description: Install RivaTuner Statistics Server 7.3.4
-          allowPrerelease: true
+      directives:
+        description: Install RivaTuner Statistics Server 7.3.4
+        allowPrerelease: true
       settings:
         id: Guru3D.RTSS
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: HandBrake.HandBrake
-        directives:
-          description: Install HandBrake 1.6.1
-          allowPrerelease: true
+      directives:
+        description: Install HandBrake 1.6.1
+        allowPrerelease: true
       settings:
         id: HandBrake.HandBrake
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Iterate.Cyberduck
-        directives:
-          description: Install Cyberduck
-          allowPrerelease: true
+      directives:
+        description: Install Cyberduck
+        allowPrerelease: true
       settings:
         id: Iterate.Cyberduck
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: JAMSoftware.TreeSize.Free
-        directives:
-          description: Install TreeSize Free V4.7.2 (64 bit)
-          allowPrerelease: true
+      directives:
+        description: Install TreeSize Free V4.7.2 (64 bit)
+        allowPrerelease: true
       settings:
         id: JAMSoftware.TreeSize.Free
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: JGraph.Draw
-        directives:
-          description: Install draw.io 24.6.4
-          allowPrerelease: true
+      directives:
+        description: Install draw.io 24.6.4
+        allowPrerelease: true
       settings:
         id: JGraph.Draw
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Logitech.GHUB
-        directives:
-          description: Install Logitech G HUB
-          allowPrerelease: true
+      directives:
+        description: Install Logitech G HUB
+        allowPrerelease: true
       settings:
         id: Logitech.GHUB
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.AppInstaller
-        directives:
-          description: Install App Installer
-          allowPrerelease: true
+      directives:
+        description: Install App Installer
+        allowPrerelease: true
       settings:
         id: Microsoft.AppInstaller
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.CLRTypesSQLServer.2019
-        directives:
-          description: Install Microsoft System CLR Types for SQL Serve…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft System CLR Types for SQL Serve…
+        allowPrerelease: true
       settings:
         id: Microsoft.CLRTypesSQLServer.2019
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.DevHome
-        directives:
-          description: Install Dev Home (Preview)
-          allowPrerelease: true
+      directives:
+        description: Install Dev Home (Preview)
+        allowPrerelease: true
       settings:
         id: Microsoft.DevHome
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.DotNet.DesktopRuntime.6
-        directives:
-          description: Install Microsoft Windows Desktop Runtime - 6.0.…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Windows Desktop Runtime - 6.0.…
+        allowPrerelease: true
       settings:
         id: Microsoft.DotNet.DesktopRuntime.6
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.DotNet.SDK.8
-        directives:
-          description: Install Microsoft .NET SDK 8.0.206 (x64)
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft .NET SDK 8.0.206 (x64)
+        allowPrerelease: true
       settings:
         id: Microsoft.DotNet.SDK.8
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.Edge
-        directives:
-          description: Install Microsoft Edge
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Edge
+        allowPrerelease: true
       settings:
         id: Microsoft.Edge
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.EdgeWebView2Runtime
-        directives:
-          description: Install Microsoft Edge WebView2 Runtime
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Edge WebView2 Runtime
+        allowPrerelease: true
       settings:
         id: Microsoft.EdgeWebView2Runtime
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.OneDrive
-        directives:
-          description: Install Microsoft OneDrive
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft OneDrive
+        allowPrerelease: true
       settings:
         id: Microsoft.OneDrive
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.PowerShell
-        directives:
-          description: Install PowerShell 7-x64
-          allowPrerelease: true
+      directives:
+        description: Install PowerShell 7-x64
+        allowPrerelease: true
       settings:
         id: Microsoft.PowerShell
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.PowerShell
-        directives:
-          description: Install PowerShell 7.4.2.0-x64
-          allowPrerelease: true
+      directives:
+        description: Install PowerShell 7.4.2.0-x64
+        allowPrerelease: true
       settings:
         id: Microsoft.PowerShell
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.SupportAndRecoveryAssistant
-        directives:
-          description: Install Microsoft Support and Recovery Assistant
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Support and Recovery Assistant
+        allowPrerelease: true
       settings:
         id: Microsoft.SupportAndRecoveryAssistant
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.Teams
-        directives:
-          description: Install Microsoft Teams
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Teams
+        allowPrerelease: true
       settings:
         id: Microsoft.Teams
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.Teams.Classic
-        directives:
-          description: Install Microsoft Teams
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Teams
+        allowPrerelease: true
       settings:
         id: Microsoft.Teams.Classic
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.Teams.Classic
-        directives:
-          description: Install Teams Machine-Wide Installer
-          allowPrerelease: true
+      directives:
+        description: Install Teams Machine-Wide Installer
+        allowPrerelease: true
       settings:
         id: Microsoft.Teams.Classic
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.Teams.Free
-        directives:
-          description: Install Microsoft Teams (personal)
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Teams (personal)
+        allowPrerelease: true
       settings:
         id: Microsoft.Teams.Free
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.UI.Xaml.2.7
-        directives:
-          description: Install Microsoft.UI.Xaml.2.7
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft.UI.Xaml.2.7
+        allowPrerelease: true
       settings:
         id: Microsoft.UI.Xaml.2.7
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.UI.Xaml.2.7
-        directives:
-          description: Install Microsoft.UI.Xaml.2.7
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft.UI.Xaml.2.7
+        allowPrerelease: true
       settings:
         id: Microsoft.UI.Xaml.2.7
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.UI.Xaml.2.8
-        directives:
-          description: Install Microsoft.UI.Xaml.2.8
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft.UI.Xaml.2.8
+        allowPrerelease: true
       settings:
         id: Microsoft.UI.Xaml.2.8
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.UI.Xaml.2.8
-        directives:
-          description: Install Microsoft.UI.Xaml.2.8
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft.UI.Xaml.2.8
+        allowPrerelease: true
       settings:
         id: Microsoft.UI.Xaml.2.8
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.UI.Xaml.2.8
-        directives:
-          description: Install Microsoft.UI.Xaml.2.8
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft.UI.Xaml.2.8
+        allowPrerelease: true
       settings:
         id: Microsoft.UI.Xaml.2.8
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCLibs.Desktop.14
-        directives:
-          description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCLibs.Desktop.14
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCLibs.Desktop.14
-        directives:
-          description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCLibs.Desktop.14
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCLibs.Desktop.14
-        directives:
-          description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCLibs.Desktop.14
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCLibs.Desktop.14
-        directives:
-          description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCLibs.Desktop.14
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCLibs.Desktop.14
-        directives:
-          description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2015 UWP Desktop Ru…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCLibs.Desktop.14
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCRedist.2008.x64
-        directives:
-          description: Install Microsoft Visual C++ 2008 Redistributabl…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2008 Redistributabl…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCRedist.2008.x64
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCRedist.2008.x86
-        directives:
-          description: Install Microsoft Visual C++ 2008 Redistributabl…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2008 Redistributabl…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCRedist.2008.x86
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCRedist.2013.x86
-        directives:
-          description: Install Microsoft Visual C++ 2013 Redistributabl…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2013 Redistributabl…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCRedist.2013.x86
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCRedist.2015+.x64
-        directives:
-          description: Install Microsoft Visual C++ 2015-2022 Redistrib…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2015-2022 Redistrib…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCRedist.2015+.x64
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VCRedist.2015+.x86
-        directives:
-          description: Install Microsoft Visual C++ 2015-2022 Redistrib…
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual C++ 2015-2022 Redistrib…
+        allowPrerelease: true
       settings:
         id: Microsoft.VCRedist.2015+.x86
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VisualStudio.2022.Community
-        directives:
-          description: Install Visual Studio Community 2022
-          allowPrerelease: true
+      directives:
+        description: Install Visual Studio Community 2022
+        allowPrerelease: true
       settings:
         id: Microsoft.VisualStudio.2022.Community
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.VisualStudioCode
-        directives:
-          description: Install Microsoft Visual Studio Code (User)
-          allowPrerelease: true
+      directives:
+        description: Install Microsoft Visual Studio Code (User)
+        allowPrerelease: true
       settings:
         id: Microsoft.VisualStudioCode
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.WindowsTerminal
-        directives:
-          description: Install Windows Terminal
-          allowPrerelease: true
+      directives:
+        description: Install Windows Terminal
+        allowPrerelease: true
       settings:
         id: Microsoft.WindowsTerminal
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Microsoft.WingetCreate
-        directives:
-          description: Install Windows Package Manager Manifest Creator
-          allowPrerelease: true
+      directives:
+        description: Install Windows Package Manager Manifest Creator
+        allowPrerelease: true
       settings:
         id: Microsoft.WingetCreate
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Mozilla.Firefox
-        directives:
-          description: Install Mozilla Firefox (x64 en-US)
-          allowPrerelease: true
+      directives:
+        description: Install Mozilla Firefox (x64 en-US)
+        allowPrerelease: true
       settings:
         id: Mozilla.Firefox
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Mozilla.Thunderbird
-        directives:
-          description: Install Mozilla Thunderbird (x64 en-US)
-          allowPrerelease: true
+      directives:
+        description: Install Mozilla Thunderbird (x64 en-US)
+        allowPrerelease: true
       settings:
         id: Mozilla.Thunderbird
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Mozilla.Thunderbird
-        directives:
-          description: Install Mozilla Thunderbird (x64 en-US)
-          allowPrerelease: true
+      directives:
+        description: Install Mozilla Thunderbird (x64 en-US)
+        allowPrerelease: true
       settings:
         id: Mozilla.Thunderbird
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Mozilla.VPN
-        directives:
-          description: Install Mozilla VPN
-          allowPrerelease: true
+      directives:
+        description: Install Mozilla VPN
+        allowPrerelease: true
       settings:
         id: Mozilla.VPN
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Nvidia.Broadcast
-        directives:
-          description: Install NVIDIA Broadcast 1.4.0.29
-          allowPrerelease: true
+      directives:
+        description: Install NVIDIA Broadcast 1.4.0.29
+        allowPrerelease: true
       settings:
         id: Nvidia.Broadcast
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Nvidia.PhysX
-        directives:
-          description: Install NVIDIA PhysX System Software 9.23.1019
-          allowPrerelease: true
+      directives:
+        description: Install NVIDIA PhysX System Software 9.23.1019
+        allowPrerelease: true
       settings:
         id: Nvidia.PhysX
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Nvidia.VideoEffectsSDK.20xx-Turing
-        directives:
-          description: Install NVIDIA Video Effects
-          allowPrerelease: true
+      directives:
+        description: Install NVIDIA Video Effects
+        allowPrerelease: true
       settings:
         id: Nvidia.VideoEffectsSDK.20xx-Turing
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: PlayStation.PSRemotePlay
-        directives:
-          description: Install PS Remote Play
-          allowPrerelease: true
+      directives:
+        description: Install PS Remote Play
+        allowPrerelease: true
       settings:
         id: PlayStation.PSRemotePlay
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Resplendence.WhoCrashed
-        directives:
-          description: Install WhoCrashed 6.70
-          allowPrerelease: true
+      directives:
+        description: Install WhoCrashed 6.70
+        allowPrerelease: true
       settings:
         id: Resplendence.WhoCrashed
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: RevoUninstaller.RevoUninstallerPro
-        directives:
-          description: Install Revo Uninstaller Pro 5.2.2
-          allowPrerelease: true
+      directives:
+        description: Install Revo Uninstaller Pro 5.2.2
+        allowPrerelease: true
       settings:
         id: RevoUninstaller.RevoUninstallerPro
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: TheDocumentFoundation.LibreOffice
-        directives:
-          description: Install LibreOffice 24.2.3.2
-          allowPrerelease: true
+      directives:
+        description: Install LibreOffice 24.2.3.2
+        allowPrerelease: true
       settings:
         id: TheDocumentFoundation.LibreOffice
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Unigine.HeavenBenchmark
-        directives:
-          description: Install Heaven Benchmark version 4.0
-          allowPrerelease: true
+      directives:
+        description: Install Heaven Benchmark version 4.0
+        allowPrerelease: true
       settings:
         id: Unigine.HeavenBenchmark
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: Valve.Steam
-        directives:
-          description: Install Steam
-          allowPrerelease: true
+      directives:
+        description: Install Steam
+        allowPrerelease: true
       settings:
         id: Valve.Steam
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: VideoLAN.VLC
-        directives:
-          description: Install VLC media player
-          allowPrerelease: true
+      directives:
+        description: Install VLC media player
+        allowPrerelease: true
       settings:
         id: VideoLAN.VLC
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: XnSoft.XnViewMP
-        directives:
-          description: Install XnView MP (x64)
-          allowPrerelease: true
+      directives:
+        description: Install XnView MP (x64)
+        allowPrerelease: true
       settings:
         id: XnSoft.XnViewMP
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: gsass1.NTop
-        directives:
-          description: Install NTop
-          allowPrerelease: true
+      directives:
+        description: Install NTop
+        allowPrerelease: true
       settings:
         id: gsass1.NTop
         source:  winget
     - resource: Microsoft.WinGet.DSC/WinGetPackage
       id: vim.vim
-        directives:
-          description: Install Vim 9.1 (x64)
-          allowPrerelease: true
+      directives:
+        description: Install Vim 9.1 (x64)
+        allowPrerelease: true
       settings:
         id: vim.vim
         source:  winget
-  configurationVersion: 0.2.0
+  configurationVersion: 0.3.0

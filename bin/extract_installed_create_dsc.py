@@ -16,15 +16,36 @@ def get_timestamped_msg( *args ) -> str:
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "  " + \
         " ".join([str(i) for i in args])
 
-def log( *args ):
+def log( *args, to_stderr=False ):
     msg = get_timestamped_msg(*args)
     if (not logfile ):
         print( msg, file=sys.stderr )
     else:        
-        print( msg, file=logfile )
+        print( msg, file=logfile )        
         if (to_stderr):
             print( msg, file=sys.stderr ) 
+
+            
+def slices(s, *args):
+    """Slice a string into a list of fixed-width fields
+    eg:
+    code:    list(slices('abdefgh', 1,2,3)) 
+    returns: ['a', 'bc', 'def']
+
+    or
     
+    code:
+    msg='abcdefgh'
+    fieldWidths(1,2,3)
+    list(slices(msg,*fieldWidths))
+    """
+    position = 0
+    for length in args:
+        yield s[position:position + length]
+        position += length
+
+    
+        
 class AppInfo:
     """All the app info from a winget list output line"""
     def __init__(self, appId, name, version, availableVersion, source ):
@@ -67,6 +88,7 @@ WINGET_LIST_POWERSHELL_SCRIPT='# powershell' + os.linesep +\
     'winget list' + os.linesep 
 
 
+
 node_name=platform.node().lower()
 system=platform.system()
 release=platform.release()
@@ -84,7 +106,7 @@ else:
     print( 'This script does not support',system,'. Exiting.', file=sys.stderr )
     os.exit(-1)
 
-
+log("'" + sys.argv[0] + "'" + ' started.')
 #
 # setup arg parser
 #
@@ -123,7 +145,7 @@ arg_parser.add_argument( '--use-winget-list-file',
 # parse command line args
 #
 args = arg_parser.parse_args()
-print(args)
+log('Received args:', args )
 #
 # extract command line args
 #
@@ -143,11 +165,28 @@ if (len(exclude_apps_cfg_path)==0 or
     exclude_apps_cfg_path.lower() == 'none'):
     exclude_apps_cfg_path = None
 
+log( 'Extracted startup argument, intermediate_file_dir:', intermediate_file_dir )
+log( 'Extracted startup argument, output_file:', output_file )
+log( 'Extracted startup argument, overwrite:', overwrite )
+log( 'Extracted startup argument, basename:', basename )
+log( 'Extracted startup argument, use_winget_list_file:', use_winget_list_file  )
+log( 'Extracted startup argument, winget_list_powershell_script:', winget_list_powershell_script )
+log( 'Extracted startup argument, winget_list_powershell_script_path:', winget_list_powershell_script_path )
+log( 'Extracted startup argument, exclude_apps_cfg_path:',  exclude_apps_cfg_path )
 
+
+#if (not use_winget_list_file):
+    
+    
+if (overwrite==False and os.path.exists(output_file)):
+    log("Flag overwrite is false and output_file,",
+        output_file,"exists.  Exiting...", to_stderr=True)
+    sys.exit(-1)
+    
 #
 # Load exclude file
 #
-print('Load exclude appids file\n\n\n')
+log('Loading excluded app ids file from',exclude_apps_cfg_path )
 excluded_apps_ids=set([])
 if (exclude_apps_cfg_path):
     with open( exclude_apps_cfg_path, encoding='utf-8', newline=os.linesep, mode='rt' ) as f:
@@ -156,29 +195,23 @@ if (exclude_apps_cfg_path):
             line=f.readline()
             if (not line): break
             lines.append(line.strip())
-        excluded_app_ids=set(lines)
-        print( 'excluded_app_ids', excluded_app_ids )
+        excluded_app_ids=sorted(set(lines))
+        log( 'excluded_app_ids:', excluded_app_ids )
 
-    
-print('winget_list_powershell_script:', winget_list_powershell_script )
-print('winget_list_output_file',winget_list_output_file )
-
-
-
-print(args)
 
 
 #
-# create temp directory
+# create intermediate file directory
 #
+log('Will create intermediate file directory:',)
 if (not os.path.exists(intermediate_file_dir)):
     os.mkdir(intermediate_file_dir)
 
 # check temp directory
 if (os.path.exists(intermediate_file_dir)):
-    print('Directory',intermediate_file_dir,'okay')
+    log('Intermediate file directory',intermediate_file_dir,'okay')
 else:
-    print('Directory',intermediate_file_dir,'not found. Exiting')
+    log('Intermediate file directory',intermediate_file_dir,'not found. Exiting')
     sys.exit(-1)
 
 #
@@ -190,7 +223,7 @@ else:
 with open(winget_list_powershell_script_path, encoding='utf-8', newline='\r\n', mode='w+') as f:
     f.write(WINGET_LIST_POWERSHELL_SCRIPT);
 
-print( 'Created script',winget_list_powershell_script,'\n')
+log( 'Created powershell "winget list" script:',winget_list_powershell_script)
     
 
 #
@@ -198,8 +231,8 @@ print( 'Created script',winget_list_powershell_script,'\n')
 #
 if (system == SYSTEM_NAME_LINUX):
     if (not release.endswith(WINDOWS_WSL_TAG)):
-        print( 'Expected to be running on WSL2 (Linux for Windows) in order to run winget.\n', file=sys.stderr)
-        print( 'Found platform.release() that does not end in WSL2:', "'"+release+"'" )
+        log( 'Expected to be running on WSL2 (Linux for Windows) in order to run winget.\n', to_stderr=True)
+        log( 'Found platform.release() that does not end in WSL2:', "'"+release+"'", to_stderr=True )
         sys.exit(-1)
         
     with open(winget_list_output_file, encoding='utf-8', newline=os.linesep, mode='wt') as f:
@@ -207,19 +240,18 @@ if (system == SYSTEM_NAME_LINUX):
         completed_process = subprocess.run(['cmd.exe', '/c', 'pwsh.exe', '-File',
                                             winget_list_powershell_script],
                                            stdout=f, capture_output=False, encoding='utf-8', check=True)
-        print('Process completed, output in,',winget_list_output_file)
+        log('"winget list" script completed, output in,',winget_list_output_file)
 elif (system == SYSTEM_NAME_WINDOWS):
     with open(winget_list_output_file, encoding='utf-8', newline=os.linesep, mode='wt') as f:
         os.chdir(intermediate_file_dir)
         completed_process = subprocess.run([winget_list_powershell_script],
                                            stdout=f, capture_output=False, encoding='utf-8', check=True)
-        print('Process completed, output in,',winget_list_output_file)
+        log('"winget list" script completed, output in,',winget_list_output_file)
 else:
-    print( 'This script does not support',system,'. Exiting.', file=sys.stderr )
+    log( 'This script does not support',system,'. Exiting.', to_stderr=True )
     os.exit(-1)
 
 
-print('before file read')
 
 found_winget_starting_line=False
 with open(winget_list_output_file, encoding='utf-8', newline='\r\n', mode='rt') as winget_file:
@@ -253,8 +285,9 @@ for appInfo in appList:
     print(appInfo)
 
 
-print( "\n\n\ncleaned app list\n\n\n" )
+
 appList = [x for x in appList if x.appId not in excluded_app_ids ]
+print( "\n\n\ncleaned app list\n\n\n" )
 for appInfo in appList:
     print(appInfo)
 
@@ -268,17 +301,21 @@ with open(output_file, encoding='utf-8', newline=WINDOWS_LINESEP, mode='+w') as 
           file=dsc_yaml )
     print("properties:",
           file=dsc_yaml)
+    print("  configurationVersion:",CONFIGURATION_VERSION,
+          file=dsc_yaml);
+    print("  resources:",
+          file=dsc_yaml);
     for app in appList:
         if (app.source == 'winget' or app.source=='msstore'):
             print('    - resource: Microsoft.WinGet.DSC/WinGetPackage',
                   file=dsc_yaml)
             print('      id:',app.appId,
                   file=dsc_yaml )
-            print('        directives:',
+            print('      directives:',
                   file=dsc_yaml )
-            print('          description: Install', app.name,
+            print('        description: Install', app.name,
                   file=dsc_yaml)
-            print('          allowPrerelease: true',
+            print('        allowPrerelease: true',
                   file=dsc_yaml)
             print('      settings:',
                   file=dsc_yaml)
@@ -286,8 +323,6 @@ with open(output_file, encoding='utf-8', newline=WINDOWS_LINESEP, mode='+w') as 
                   file=dsc_yaml)
             print('        source: ',app.source,
                   file=dsc_yaml )
-    print("  configurationVersion:",CONFIGURATION_VERSION,
-          file=dsc_yaml);
 
 sys.exit(0)
             

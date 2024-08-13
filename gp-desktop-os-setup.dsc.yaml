@@ -1,23 +1,29 @@
 # yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
 properties:
-  assertions:
-    - resource: Microsoft.Windows.Developer/OsVersion
-      directives:
-        description: Verify min OS version requirement
-        allowPrerelease: true
-      settings:
-        MinVersion: '10.0.22000'
-  resources:
-    - resource: Microsoft.Windows.Developer/DeveloperMode
-      directives:
-        description: Enable Developer Mode
-        allowPrerelease: true
-      settings:
-        Ensure: Present
-    - resource: Microsoft.Windows.Developer/EnableDarkMode
-      directives:
-        description: Enable dark mode
-        allowPrerelease: true
-      settings:
-        Ensure: Present
-  configurationVersion: 0.2.0
+#  assertions:
+#    - resource: Microsoft.Windows.Developer/OsVersion
+#      directives:
+#        description: Verify min OS version requirement
+#        allowPrerelease: true
+#      settings:
+#        MinVersion: '10.0.22000'
+# resources:
+#    - resource: Microsoft.Windows.Developer/DeveloperMode
+#      directives:
+#        description: Enable Developer Mode
+#        allowPrerelease: true
+#      settings:
+#        Ensure: Present
+#    - resource: Microsoft.Windows.Developer/EnableDarkMode
+#      directives:
+#        description: Enable dark mode
+#        allowPrerelease: true
+#      settings:
+#        Ensure: Present
+#    - resource: Microsoft.Windows.Developer/ShowHiddenFiles
+#      directives:
+#        description: Show hidden files
+#        allowPrerelease: true
+#      settings:
+#        Ensure: Present
+  configurationVersion: 0.3.0
