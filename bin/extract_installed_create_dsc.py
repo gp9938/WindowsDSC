@@ -11,6 +11,8 @@ import typing
 import subprocess
 import sys
 
+DEBUG=False
+
 logfile = None
 def get_timestamped_msg( *args ) -> str:
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "  " + \
@@ -44,7 +46,45 @@ def slices(s, *args):
         yield s[position:position + length]
         position += length
 
-    
+
+def run_winget_list():
+     #
+     # create powershell script that runs winget
+     #
+     # remember newline has to be Windows because whether in Windows or WSL,
+     # the winget runs in Windows and therefore the powershell script runs in Windows
+     #
+     with open(winget_list_powershell_script_path, encoding='utf-8', newline='\r\n', mode='w+') as f:
+         f.write(WINGET_LIST_POWERSHELL_SCRIPT);
+
+     log( 'Created powershell "winget list" script:',winget_list_powershell_script)
+
+
+     #
+     # run the powershell script with winget list
+     #
+     if (system == SYSTEM_NAME_LINUX):
+         if (not release.endswith(WINDOWS_WSL_TAG)):
+             log( 'Expected to be running on WSL2 (Linux for Windows) in order to run winget.\n', to_stderr=True)
+             log( 'Found platform.release() that does not end in WSL2:', "'"+release+"'", to_stderr=True )
+             sys.exit(-1)
+
+         with open(winget_list_output_file, encoding='utf-8', newline=os.linesep, mode='wt') as f:
+             os.chdir(intermediate_file_dir)
+             completed_process = subprocess.run(['cmd.exe', '/c', 'pwsh.exe', '-File',
+                                                 winget_list_powershell_script],
+                                                stdout=f, capture_output=False, encoding='utf-8', check=True)
+             log('"winget list" script completed, output in,',winget_list_output_file)
+     elif (system == SYSTEM_NAME_WINDOWS):
+         with open(winget_list_output_file, encoding='utf-8', newline=os.linesep, mode='wt') as f:
+             os.chdir(intermediate_file_dir)
+             completed_process = subprocess.run([winget_list_powershell_script],
+                                                stdout=f, capture_output=False, encoding='utf-8', check=True)
+             log('"winget list" script completed, output in,',winget_list_output_file)
+     else:
+         log( 'This script does not support',system,'. Exiting.', to_stderr=True )
+         os.exit(-1)
+
         
 class AppInfo:
     """All the app info from a winget list output line"""
@@ -175,7 +215,6 @@ log( 'Extracted startup argument, winget_list_powershell_script_path:', winget_l
 log( 'Extracted startup argument, exclude_apps_cfg_path:',  exclude_apps_cfg_path )
 
 
-#if (not use_winget_list_file):
     
     
 if (overwrite==False and os.path.exists(output_file)):
@@ -214,43 +253,9 @@ else:
     log('Intermediate file directory',intermediate_file_dir,'not found. Exiting')
     sys.exit(-1)
 
-#
-# create powershell script that runs winget
-#
-# remember newline has to be Windows because whether in Windows or WSL,
-# the winget runs in Windows and therefore the powershell script runs in Windows
-#
-with open(winget_list_powershell_script_path, encoding='utf-8', newline='\r\n', mode='w+') as f:
-    f.write(WINGET_LIST_POWERSHELL_SCRIPT);
-
-log( 'Created powershell "winget list" script:',winget_list_powershell_script)
+if (use_winget_list_file == None):
+    run_winget_list()
     
-
-#
-# run the powershell script with winget list
-#
-if (system == SYSTEM_NAME_LINUX):
-    if (not release.endswith(WINDOWS_WSL_TAG)):
-        log( 'Expected to be running on WSL2 (Linux for Windows) in order to run winget.\n', to_stderr=True)
-        log( 'Found platform.release() that does not end in WSL2:', "'"+release+"'", to_stderr=True )
-        sys.exit(-1)
-        
-    with open(winget_list_output_file, encoding='utf-8', newline=os.linesep, mode='wt') as f:
-        os.chdir(intermediate_file_dir)
-        completed_process = subprocess.run(['cmd.exe', '/c', 'pwsh.exe', '-File',
-                                            winget_list_powershell_script],
-                                           stdout=f, capture_output=False, encoding='utf-8', check=True)
-        log('"winget list" script completed, output in,',winget_list_output_file)
-elif (system == SYSTEM_NAME_WINDOWS):
-    with open(winget_list_output_file, encoding='utf-8', newline=os.linesep, mode='wt') as f:
-        os.chdir(intermediate_file_dir)
-        completed_process = subprocess.run([winget_list_powershell_script],
-                                           stdout=f, capture_output=False, encoding='utf-8', check=True)
-        log('"winget list" script completed, output in,',winget_list_output_file)
-else:
-    log( 'This script does not support',system,'. Exiting.', to_stderr=True )
-    os.exit(-1)
-
 
 
 found_winget_starting_line=False
@@ -274,28 +279,29 @@ with open(winget_list_output_file, encoding='utf-8', newline='\r\n', mode='rt') 
             if (line.startswith('-----')):
                 found_winget_starting_line=True
 
-print("\nprocessed winget list output file\n\n" )
-        
-for appInfo in appList:
-    print(appInfo)
+
+
 
 appList.sort( key=lambda x: x.appId )    
-print('\n\n\nSorted:\n\n')
-for appInfo in appList:
-    print(appInfo)
 
+if (DEBUG):
+    log( 'Extracted and sorted appInfo from winget list')
+    for appInfo in appList:
+        print(appInfo)
 
 
 appList = [x for x in appList if x.appId not in excluded_app_ids ]
-print( "\n\n\ncleaned app list\n\n\n" )
-for appInfo in appList:
-    print(appInfo)
-
+log( 'Excluded app ids removed from app list')
+if (DEBUG):
+    log( 'App list with excluded app ids removed' )
+    for appInfo in appList:
+        print(appInfo)
 
 #
 # write DSC yaml file.
 # Windows newlines required
 #
+log('Will create DSC yaml file:', output_file )
 with open(output_file, encoding='utf-8', newline=WINDOWS_LINESEP, mode='+w') as dsc_yaml:
     print("# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2",
           file=dsc_yaml )
@@ -324,38 +330,6 @@ with open(output_file, encoding='utf-8', newline=WINDOWS_LINESEP, mode='+w') as 
             print('        source: ',app.source,
                   file=dsc_yaml )
 
+log('Ouput file', output_file, 'write complete.')
+
 sys.exit(0)
-            
-
-
-
-#gawk -v FIELDWIDTHS="1 10 4 2 2" -v OFS=, '{print $1,$2,$3,$4,$5}' file
-
-# with open('/mnt/c/Users/petra/installed-packages02.csv',encoding='utf-8',newline='\r\n', mode='rt') as csvfile:
-#     csvReader = csv.reader(csvfile, delimiter=',', quotechar='|')
-# #    print("----csvReader type",type(csvReader));
-#     sortedInstalled = sorted(csvReader, key=operator.itemgetter(ID_COL) )
-#     for row in sortedInstalled:
-# #        print('row length is:', len(row))
-# #       print(row)
-# #        if(len(row)>4): print("col0:",row[0],"col4:",row[4])
-# #        if(len(row)>5): print("col0:",row[0],"col5:",row[5])
-# #        print(row)
-# #        print('\n')
-#         if ( len(row) >SOURCE_COL and
-#             (row[SOURCE_COL] == 'winget' or row[SOURCE_COL] == 'msstore' )):
-#             print('    - resource: Microsoft.WinGet.DSC/WinGetPackage' )
-#             print('      id:',row[ID_COL])
-#             print('        directives:')
-#             print('          description: Install', row[NAME_COL] )
-#             print('          allowPrerelease: true')
-#             print('      settings:')
-#             print('        id:',row[ID_COL])
-#             print('        source: ',row[SOURCE_COL] )
-            
-# #        print( row[1],row[2],row[3],row[4] )
-# #        print( type(row),':  ',row )
-# #        print(', '.row['Column1'],'\t',row['Column2'],'\t',row['Column3'] )
-
-# print("  configurationVersion:",CONFIGURATION_VERSION);
-
