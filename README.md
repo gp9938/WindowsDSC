@@ -40,16 +40,24 @@ The `winget configure` option is a work in progress, and some features of `winge
 5. Help is availble by running the script without arguments or with the argument `-help`
 
 ## Applying the the `DSC yaml` file
-**TBD**
+_**WARNING: Applying the generated DSC yaml file will result in that host getting all the software listed in the `yaml` file installed (unless already installed).   This can be a dramatic change to any host and you should be certain you want to do this.  I use a Hyper-V Windows VM to test the resulting `yaml` file.**_
+
+From Windows use the PowerShell script `bin\apply-dsc-yaml.ps1`.
+From WSL2, use the bash script `bin\apply-dsc-yaml.bash`.
+
+The direct `winget` command is:
+   - `winget configure <dsc-yaml-file> --accept-configuration-agreements --disable-interactivity`
+
+From Windows _Dev Home_, go to left menu bar and select _Machine Configuration_, the select _Configuration file_.  This wil result in a file _Open_ dialog where you can select the `yaml` file.
 
 ## Notes & Limitations
- 1. The winget extraction and processing is designed to work within a Windows environment with Python 3 installed or within a Windows WSL2 environment. 
- 1. Google Chrome is currently in the default exclude.cfg file because the installer launches Chrome and also causes **winget configure** to return an error.  The error is not fatal but *is* very confusing.   I am trying to learn how to better control the Google installer -- if that is possible.  It may not be possible as Google locks up some of the better configuration features with their paid enterprise service.
+ 1. The `winget` extraction and processing is designed to work within a Windows environment with Python 3 installed or within a Windows WSL2 environment. 
+ 1. Google Chrome is currently in the default `cfg\exclude.cfg` file because `winget` running the Chrome installer results in Chrome launching and in `winget configure` returning an error.  The error is not fatal but *is* very confusing.   I am trying to learn how to better control the Google installer -- if that is possible.  It may not be possible as Google locks up some of the better configuration features within their paid enterprise tier.
  1. Windows configuration features like enabling dark mode require use of an experimental winget that is hard to get installed.  These features may not work anyway according to some forum posts
  1. There seem to be some dependencies on using the new version of PowerShell, PowerShell 7, but that is not completely clear.  My testing seems to work without it but some PowerShell commands to interrogate the system are only in PowerShell 7
- 1. VS Code is explicity supported by winget configure but I have not tried to extract and use this feature yet
- 1. How Windows DSC for Dev Home relates to the enterprise Windows DSC that has been available for years is not clear to me and isn't clear on any of the documentation I have read.  There is a huge overlap but Windows DSC for enterprise seems to be focused on PowerShell driven solutions that use JSON configurations.
- 1. Note that you can find out which resources are controllable using PowerShell command:
+ 1. Visual Studio Code (VS Code) is explicity supported by `winget configure` but I have not tried to use this feature yet
+ 1. How Windows DSC for Dev Home relates to the enterprise Windows DSC that has been available for years is not clear to me and isn't clear on any of the documentation I have read.  There is a huge overlap but Windows DSC for enterprise seems to be focused on PowerShell driven solutions that use JSON configuration files.
+ 1. Note that you can find out which resources are DSC controllable using the below PowerShell command, but the information will be a bit cryptic.
     - `Find-DscResource -Module Microsoft.Windows.Developer -Repository PSGallery -AllowPrerelease`
 
 
