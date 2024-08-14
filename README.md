@@ -42,13 +42,14 @@ The `winget configure` option is a work in progress, and some features of `winge
 ## Applying the the `DSC yaml` file
 _**WARNING: Applying the generated DSC yaml file will result in that host getting all the software listed in the `yaml` file installed (unless already installed).   This can be a dramatic change to any host and you should be certain you want to do this.  I use a Hyper-V Windows VM to test the resulting `yaml` file.**_
 
-From Windows use the PowerShell script `bin\apply-dsc-yaml.ps1`.
-From WSL2, use the bash script `bin\apply-dsc-yaml.bash`.
 
-The direct `winget` command is:
+- From Windows use the PowerShell script `bin\apply-dsc-yaml.ps1`.
+- From WSL2, use the bash script `bin\apply-dsc-yaml.bash`.
+
+- The direct `winget` command is:
    - `winget configure <dsc-yaml-file> --accept-configuration-agreements --disable-interactivity`
 
-From Windows _Dev Home_, go to left menu bar and select _Machine Configuration_, the select _Configuration file_.  This wil result in a file _Open_ dialog where you can select the `yaml` file.
+- From Windows _Dev Home_, go to left menu bar and select _Machine Configuration_, then select option _Configuration file_ from the main section.  This will result in a file _Open_ dialog where you can select the `yaml` file to apply.
 
 ## Notes & Limitations
  1. The `winget` extraction and processing is designed to work within a Windows environment with Python 3 installed or within a Windows WSL2 environment. 
