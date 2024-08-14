@@ -1,4 +1,4 @@
-# Winget to DSC Yaml
+# Winget list to DSC Yaml
 ## Overview
 This python script extracts the installed programs from a Windows installation and creates a `yaml` file that can be applied to a system using `winget configure <dsc-file.yaml>`
 
