@@ -68,7 +68,11 @@ _**WARNING: Applying the generated DSC yaml file will result in that host gettin
         - `(Get-DscResource -Module Microsoft.Windows.Developer -Name Taskbar).Properties`
      - If you want to see what values are available for a single property (i.e. SearchboxMode), you can do:
        - `((Get-DscResource -Module Microsoft.Windows.Developer -Name Taskbar).Properties | Where-Object -Property Name -eq SearchboxMode).Values`
-
+1. Commands
+   - `Install-PackageProvider -Name NuGet -Force`
+   - `Uninstall-Package -Name Cyberduck`
+   - `Get-Package` lists all packages
+   - `Get-Package | Where-Object -like *Statistics*` and `Get-Package | ? -like *Statistics*` are equivalent as question mark is an alias for `Where-Object`
 
 
 
