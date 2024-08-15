@@ -42,6 +42,7 @@ The `winget configure` option is a work in progress, and some features of `winge
 ## Applying the the `DSC yaml` file
 _**WARNING: Applying the generated DSC yaml file will result in that host getting all the software listed in the `yaml` file installed (unless already installed).   This can be a dramatic change to any host and you should be certain you want to do this.  I use a Hyper-V Windows VM to test the resulting `yaml` file.**_
 
+**NOTE: If you apply the `yaml` file from a non-admin command prompt, you will receive a UAC prompt to approve Admin access for the apps that require it.**
 
 - From Windows use the PowerShell script `bin\apply-dsc-yaml.ps1`.
 - From WSL2, use the bash script `bin\apply-dsc-yaml.bash`.
@@ -60,6 +61,14 @@ _**WARNING: Applying the generated DSC yaml file will result in that host gettin
  1. How Windows DSC for Dev Home relates to the enterprise Windows DSC that has been available for years is not clear to me and isn't clear on any of the documentation I have read.  There is a huge overlap but Windows DSC for enterprise seems to be focused on PowerShell driven solutions that use JSON configuration files.
  1. Note that you can find out which resources are DSC controllable using the below PowerShell command, but the information will be a bit cryptic.
     - `Find-DscResource -Module Microsoft.Windows.Developer -Repository PSGallery -AllowPrerelease`
+ 1.  From https://github.com/microsoft/devhome/issues/2760#issuecomment-2086965784
+     - If you want to know what DSC resources are available for a given PowerShell module, you can use the following expression:
+        -  `Get-DscResource -Module Microsoft.Windows.Developer`
+     - If you would like to know more about an individual DSC and the available properties:
+        - `(Get-DscResource -Module Microsoft.Windows.Developer -Name Taskbar).Properties`
+     - If you want to see what values are available for a single property (i.e. SearchboxMode), you can do:
+       - `((Get-DscResource -Module Microsoft.Windows.Developer -Name Taskbar).Properties | Where-Object -Property Name -eq SearchboxMode).Values`
+
 
 
 
